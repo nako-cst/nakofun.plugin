@@ -14,7 +14,6 @@ jobs:
     - name: Checkout repository code
       uses: actions/checkout@v4
 
-    # This enforces Java 8 compiling for exact MC 1.12.2 runtime support
     - name: Set up JDK 8
       uses: actions/setup-java@v4
       with:
@@ -22,5 +21,13 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
+    # This is the vital compilation step you need back!
     - name: Build artifact with Maven
       run: mvn -B package --file pom.xml
+
+    # This uploads the generated jar right to your browser
+    - name: upload compiled plugin jar
+      uses: actions/upload-artifact@v4
+      with:
+        name: nakofun-plugin
+        path: target/*.jar
