@@ -7,12 +7,12 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example</groupId>
-    <artifactId>myplugin</artifactId>
-    <version>1.0.0</version>
+    <groupId>com.nakofun</groupId>
+    <artifactId>nakofun</artifactId>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>MyPlugin</name>
+    <name>nakofun</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
