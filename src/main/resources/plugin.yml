@@ -1,15 +1,16 @@
-name: Nakofun
-version: 1.0
+name: nakofun
+version: 1.2
 main: com.nakofun.plugin.Nakofun
 api-version: 1.12
 
 commands:
   nf:
-    description: nakofun command :D
-    permission: nakofun.use
+    description: nakofun command
+    usage: /<command> [particles]
+    permission: nako.fun
     permission-message: &cYou do not have permission to use this command!
 
 permissions:
-  nakofun.use:
-    description: Allows a player to use /nf
+  nako.fun:
+    description: nf perms
     default: op
