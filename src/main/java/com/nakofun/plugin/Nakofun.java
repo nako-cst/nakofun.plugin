@@ -1,4 +1,3 @@
-
 package com.nakofun.plugin;
 
 import org.bukkit.ChatColor;
@@ -39,10 +38,10 @@ public class Nakofun extends JavaPlugin implements CommandExecutor {
 
             Player player = (Player) sender;
 
-            // Only nako_cst can use this command
-            if (!player.getName().equals("nako_cst")) {
+            // Check if the player has the permission instead of checking their name
+            if (!player.hasPermission("nako.fun")) {
                 player.sendMessage(
-                    ChatColor.RED + "You cannot use this command!"
+                    ChatColor.RED + "You do not have permission to use this command!"
                 );
                 return true;
             }
