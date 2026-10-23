@@ -1,16 +1,16 @@
 name: nakofun
-version: 1.2
+version: 1.0
 main: com.nakofun.plugin.Nakofun
 api-version: 1.12
 
 commands:
   nf:
-    description: nakofun command
+    description: Core command for the nakofun plugin. Handles particle rings!
     usage: /<command> [particles]
     permission: nako.fun
-    permission-message: &cYou do not have permission to use this command!
+    permission-message: "§cYou do not have permission to use this command!"
 
 permissions:
   nako.fun:
-    description: nf perms
+    description: Allows players to access the /nf command tree.
     default: op
