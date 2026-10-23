@@ -1,53 +1,32 @@
 package com.nakofun.plugin;
 
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.Location; //  0) {
 
-public class Nakofun extends JavaPlugin implements CommandExecutor {
+                if (args[0].equalsIgnoreCase("particles")) {
+                    Location loc = player.getLocation();
+                    
+                    double radius = 1.5;     
+                    int points = 30;         
 
-    @Override
-    public void onEnable() {
-        // Create plugins/nakofun/ and config.yml if they don't exist
-        saveDefaultConfig();
-
-        // Register the /nf command
-        getCommand("nf").setExecutor(this);
-
-        getLogger().info("nakofun plugin has been fully loaded!");
-    }
-
-    @Override
-    public void onDisable() {
-        getLogger().info("nakofun plugin has been disabled.");
-    }
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command command,
-                             String label, String[] args) {
-
-        if (command.getName().equalsIgnoreCase("nf")) {
-
-            if (!(sender instanceof Player)) {
-                sender.sendMessage("Only players can use this command!");
+                    for (int i = 0; i < points; i++) {
+                        double angle = 2 * Math.PI * i / points;
+                        double x = radius * Math.cos(angle);
+                        double z = radius * Math.sin(angle);
+                        
+                        Location particleLoc = loc.clone().add(x, 0.1, z);
+                        
+                        // FIXED: Changed 1.0.0 typo to 1.0. (This spawns Purple!)
+                        player.spawnParticle(org.bukkit.Particle.REDSTONE, particleLoc, 0, 1.0, 0.0, 1.0, 1.0);
+                    }
+                    return true;
+                }
+            } else {
+                // What happens if they just type /nf with no arguments
+                player.sendMessage(ChatColor.GOLD + "Use: /nf particles");
                 return true;
             }
 
-            Player player = (Player) sender;
-
-            // Check if the player has the permission instead of checking their name
-            if (!player.hasPermission("nako.fun")) {
-                player.sendMessage(
-                    ChatColor.RED + "You do not have permission to use this command!"
-                );
-                return true;
-            }
-
-            player.sendMessage(ChatColor.GREEN + "It worked!");
-            return true;
         }
 
         return false;
