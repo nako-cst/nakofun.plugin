@@ -1,10 +1,15 @@
-name: nakofun
-version: 1.0.0
+name: Nakofun
+version: 1.0
 main: com.nakofun.plugin.Nakofun
-author: nako_cst
-description: nakofun shenanigans
+api-version: 1.12
 
 commands:
   nf:
-    description: Opens up the custom Nakofun main menu chest panel layout.
-    usage: /<command>
+    description: nakofun command :D
+    permission: nakofun.use
+    permission-message: &cYou do not have permission to use this command!
+
+permissions:
+  nakofun.use:
+    description: Allows a player to use /nf
+    default: op
